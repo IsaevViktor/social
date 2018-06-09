@@ -1,13 +1,15 @@
-package com.social.persitence;
+package com.social.persistence;
 
 import com.social.SocialApplication;
-import com.social.model.Address;
-import com.social.model.Person;
+import com.social.persistence.model.Address;
+import com.social.persistence.model.Person;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -15,16 +17,17 @@ import javax.persistence.EntityManager;
 
 import static org.junit.Assert.assertEquals;
 
+@Transactional
 @DirtiesContext()
 @RunWith(SpringRunner.class)
-@ContextConfiguration(classes = SocialApplication.class)
-public class JpaDaoTest {
+@TestPropertySource(locations = "classpath:application-integrationtest.properties")
+@SpringBootTest(classes = {SocialApplication.class})
+public class PersonAddressJpaDaoTest {
     @Autowired
     private EntityManager em;
     @Autowired
     private JpaPersonDao jpaPersonDao;
 
-    @Transactional
     @Test
     public void testFindByName() {
         Person person = new Person();
@@ -40,7 +43,6 @@ public class JpaDaoTest {
 
 
     @Test
-    @Transactional
     public void testPersistAddress() {
         Address address = new Address();
         address.setCity("Moscow");

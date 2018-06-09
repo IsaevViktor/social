@@ -1,4 +1,4 @@
-package com.social.model.security;
+package com.social.security.model;
 
 import javax.persistence.*;
 

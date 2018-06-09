@@ -1,6 +1,6 @@
-package com.social.persitence;
+package com.social.persistence;
 
-import com.social.model.Address;
+import com.social.persistence.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;

@@ -1,9 +1,7 @@
-package com.social.persitence;
+package com.social.persistence;
 
-import com.social.model.Person;
+import com.social.persistence.model.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import java.util.List;
 
 public interface PersonDAO extends JpaRepository<Person, Long>{
     Person findByName(String name);

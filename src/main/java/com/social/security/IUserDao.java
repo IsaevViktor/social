@@ -1,7 +1,7 @@
 package com.social.security;
 
 
-import com.social.model.security.User;
+import com.social.security.model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 

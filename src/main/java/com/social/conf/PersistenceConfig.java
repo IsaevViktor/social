@@ -20,10 +20,12 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
+import static java.lang.ProcessBuilder.Redirect.to;
+
 
 @Configuration
 @EnableTransactionManagement
-//@EnableJpaRepositories(basePackages = {"com.social.persitence"})
+//@EnableJpaRepositories(basePackages = {"com.social.persistence"})
 @PropertySource("classpath:application.properties")
 public class PersistenceConfig{
     @Autowired
@@ -33,11 +35,10 @@ public class PersistenceConfig{
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
-        emf.setPackagesToScan("com.social.model");
+        emf.setPackagesToScan("com.social.persistence.model", "com.social.security.model");
 
         emf.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
         emf.setJpaProperties(hibernateProperties());
-
         return emf;
     }
 

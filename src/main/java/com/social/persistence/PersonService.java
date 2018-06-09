@@ -1,6 +1,6 @@
-package com.social.persitence;
+package com.social.persistence;
 
-import com.social.model.Person;
+import com.social.persistence.model.Person;
 
 public interface PersonService {
     Person findByName(String name);

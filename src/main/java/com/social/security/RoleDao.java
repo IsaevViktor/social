@@ -1,6 +1,6 @@
 package com.social.security;
 
-import com.social.model.security.Role;
+import com.social.security.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.stereotype.Repository;

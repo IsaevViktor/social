@@ -21,15 +21,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
     private DataSource dataSource;
 
     @Autowired
+    @Qualifier("MyDataSources")
+    public void setDataSource(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    /*@Autowired
     public SecurityConfig(@Qualifier("MyDataSources") DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
+*/
 
     @Autowired
     private Environment env;
 
     @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
+    protected BCryptPasswordEncoder passwordEncoder;
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
@@ -38,6 +46,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .usersByUsernameQuery(env.getProperty("spring.queries.user-query"))
                 .authoritiesByUsernameQuery(env.getProperty("spring.queries.role-query"))
                 .passwordEncoder(passwordEncoder);
+        /*auth.inMemoryAuthentication()
+                .withUser("user")
+                .password(passwordEncoder.encode("password"))
+                .roles("USER");*/
     }
 
     @Override
@@ -62,13 +74,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
                 .csrf().disable();
     }
 
-    @Autowired
-    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-                .inMemoryAuthentication()
-                    .passwordEncoder(passwordEncoder)
-                    .withUser("user").password("password").roles("USER");
-    }
+
+
+//    @Autowired
+//    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth
+//                .inMemoryAuthentication()
+//                    .passwordEncoder(passwordEncoder)
+//                    .withUser("user").password("password").roles("USER");
+//    }
 
 
 }

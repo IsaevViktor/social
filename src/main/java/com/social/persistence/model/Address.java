@@ -1,4 +1,4 @@
-package com.social.model;
+package com.social.persistence.model;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

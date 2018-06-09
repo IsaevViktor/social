@@ -1,7 +1,6 @@
 package com.social.security;
 
-import com.social.model.security.Role;
-import com.social.model.security.User;
+import com.social.security.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -32,6 +31,7 @@ public class UserService implements IUserService {
     @Override
     public void saveSimpleUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setActive(1);
         Role userRole = roleDao.findByRole("USER");
         user.setRoles(new HashSet<>(asList(userRole)));
         userDao.save(user);

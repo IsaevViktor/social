@@ -1,27 +1,28 @@
-package com.social.persitence;
+package com.social.persistence;
 
-import com.social.SocialApplication;
-import com.social.model.Person;
+import com.social.persistence.model.Person;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.test.annotation.DirtiesContext;
-import org.springframework.test.context.ContextConfiguration;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import static org.junit.Assert.assertEquals;
 
-@DirtiesContext
-@RunWith(SpringRunner.class)
-@ContextConfiguration(classes = ServiceTest.PersonTestConfiguration.class)
-public class ServiceTest {
 
-    @TestConfiguration
+@RunWith(SpringRunner.class)
+@SpringBootTest
+public class ServiceUnitTest {
+
+    @Configuration
     static class PersonTestConfiguration {
+        @Primary
         @Bean
         PersonService testPersonService() {
             return new PersonServiceImpl();

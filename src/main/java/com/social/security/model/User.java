@@ -1,4 +1,4 @@
-package com.social.model.security;
+package com.social.security.model;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -26,15 +26,19 @@ public class User {
     @NotEmpty(message = "*Please provide your password")
     private String password;
 
+    @Column(name = "active")
+    private int active;
+
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    public User(String email, String password, Set<Role> roles){
+    public User(String email, String password, Set<Role> roles, int active){
         this.email = email;
         this.password = password;
         this.roles = roles;
+        this.active = active;
     }
 
     public User() {
@@ -70,5 +74,13 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public int getActive() {
+        return active;
+    }
+
+    public void setActive(int active) {
+        this.active = active;
     }
 }

@@ -1,6 +1,6 @@
 package com.social.security;
 
-import com.social.model.security.User;
+import com.social.security.model.User;
 
 public interface IUserService {
     User findUserByEmail(String email);

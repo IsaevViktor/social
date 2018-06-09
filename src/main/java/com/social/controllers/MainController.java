@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class MainController {
-    @RequestMapping("/")
-    public String index() {
-        return "redirect:/home";
+    @RequestMapping({"/", "/home"})
+    public String home() {
+        return "home";
     }
 
     @RequestMapping(value = "/protected**")

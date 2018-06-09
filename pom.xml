@@ -18,6 +18,12 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
+    <repositories>
+        <repository>
+            <id>spring-snasphot</id>
+            <url>https://repo.spring.io/libs-snapshot</url>
+        </repository>
+    </repositories>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -45,6 +51,12 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>5.0.4.RELEASE</version>
+            <!--<scope>test</scope>-->
         </dependency>
         <!--<dependency>-->
             <!--<groupId>org.springframework</groupId>-->
@@ -113,13 +125,15 @@
             <artifactId>tomcat-embed-jasper</artifactId>
             <version>9.0.1</version>
             <!--<scope>provided</scope>-->
+
+        <!--Test in memory data base-->
         </dependency>
-        <!--<dependency>-->
-            <!--<groupId>com.h2database</groupId>-->
-            <!--<artifactId>h2</artifactId>-->
-            <!--<scope>test</scope>-->
-            <!--<version>1.4.197</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>test</scope>
+            <version>1.4.197</version>
+        </dependency>
 
         <!-- hot swapping, disable cache for template, enable live reload -->
         <dependency>
