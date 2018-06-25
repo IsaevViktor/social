@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -33,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @RunWith(SpringRunner.class)
 @TestPropertySource(locations = "classpath:application-integrationtest.properties")
-@SpringBootTest(classes = {SocialApplication.class, /*MvcConfig.class, SecurityConfig.class, PersistenceConfig.class, SecurityIntegrationTest.config.class*/})
+@SpringBootTest(classes = {SocialApplication.class})
 @AutoConfigureMockMvc(secure = false)
 public class SecurityIntegrationTest {
     /*@Configuration

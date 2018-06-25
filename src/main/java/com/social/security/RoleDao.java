@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+import java.util.ArrayList;
+import java.util.List;
 
 @Repository
 public class RoleDao extends SimpleJpaRepository<Role, Long> implements IRoleDao {
@@ -19,7 +21,7 @@ public class RoleDao extends SimpleJpaRepository<Role, Long> implements IRoleDao
     }
 
     @Override
-    public Role findByRole(String role) {
+    public Role findByRole(String role)  {
         Query query = em.createNamedQuery("findByRole", Role.class).setParameter("role", role);
         return (Role) query.getResultList().get(0);
     }

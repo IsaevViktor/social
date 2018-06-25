@@ -18,6 +18,7 @@ import org.springframework.web.context.ContextLoader;
 
 import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
+import java.util.Iterator;
 import java.util.Properties;
 
 import static java.lang.ProcessBuilder.Redirect.to;
@@ -31,7 +32,14 @@ public class PersistenceConfig{
     @Autowired
     private Environment env;
 
-    @Bean
+    static int method() {
+        return true ? null : 0;
+    }
+
+
+
+
+    @Bean()
     public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
         LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
         emf.setDataSource(dataSource());
